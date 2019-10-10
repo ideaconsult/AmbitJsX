@@ -1,7 +1,7 @@
 /** AmbitJsX library - a neXt Ambit queries JavaScript library. Copyright © 2019, IDEAConsult Ltd. All rights reserved. @license MIT.*/
 (function(global, factory) {
     typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory(require("as-sys")) : typeof define === "function" && define.amd ? define([ "as-sys" ], factory) : (global = global || self, 
-    global["ambit-jsx"] = factory(global.a$));
+    global["ambit-jsx"] = factory(global.asSys));
 })(this, (function(a$) {
     "use strict";
     var Ambit = {
@@ -55,7 +55,7 @@
         a$.setup(this, settings);
     }
     Authorization.prototype = {
-        afterSuccess: null,
+        afterResponse: null,
         loadRoles() {},
         loadPolicies() {},
         addPolicy(data) {}

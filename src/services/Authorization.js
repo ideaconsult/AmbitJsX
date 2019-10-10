@@ -12,7 +12,7 @@ function Authorization(settings) {
 };
 
 Authorization.prototype = {
-    afterSuccess: null,
+    afterResponse: null,
 
     loadRoles() {
     },
