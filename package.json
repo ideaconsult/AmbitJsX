@@ -6,8 +6,8 @@
 	"module": "src/index.js",
 	"scripts": {
 		"build": "rm -f $npm_package_name*.js && rollup -c && sed -E -e \"s/\\{\\{VERSION\\}\\}/$npm_package_version/\" $npm_package_main | terser -b --comments -o $npm_package_main",
-		"test": "rsync node_modules/jasmine-core/lib/jasmine-core/*.js test/libs && rsync node_modules/jasmine-core/lib/jasmine-core/*.css test/libs && rsync node_modules/lodash/lodash.js test/libs && rsync node_modules/as-sys/as-sys.js test/libs && rsync node_modules/commbase-jsx/commbase-jsx.js test/libs && jasmine-node test",
-		"prepare": "npm run build && npm test && terser -mc --ie8 --keep-fnames -o ${npm_package_name}.min.js -- $npm_package_main && chmod a-w $npm_package_name*.js && zip ${npm_package_main}.zip LICENSE ./$npm_package_name*.js",
+		"test": "npm run prepare && mocha test --require expectations",
+		"prepare": "npm run build && terser -mc --ie8 --keep-fnames -o ${npm_package_name}.min.js -- $npm_package_main && chmod a-w $npm_package_name*.js && zip ${npm_package_main}.zip LICENSE ./$npm_package_name*.js",
 		"postpublish": "git push && git tag -am \"Release $npm_package_version.\" ${npm_package_version} && git push --tags"
 	},
 	"repository": {
@@ -35,7 +35,6 @@
 	"license": "MIT",
 	"dependencies": {
 		"as-sys": "git+ssh://git@github.com/thejonan/asSys.js.git",
-		"commbase-jsx": "file:../CommBaseJsX",
 		"lodash": "^4.17.15"
 	},
 	"bugs": {
@@ -43,8 +42,9 @@
 	},
 	"homepage": "https://github.com/ideaconsult/AmbitJsX#readme",
 	"devDependencies": {
-		"jasmine": "^3.5.0",
-		"jasmine-node": "^3.0.0",
+		"commbase-jsx": "file:../CommBaseJsX",
+		"expectations": "^1.0.0",
+		"mocha": "^6.2.1",
 		"rollup": "^1.23.1",
 		"terser": "^4.3.8"
 	},
