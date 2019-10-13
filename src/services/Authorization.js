@@ -8,7 +8,7 @@
 import a$ from 'as-sys';
 
 function Authorization(settings) {
-    a$.setup(this, settings);
+    a$.setup(this, Authorization.prototype, settings);
 };
 
 Authorization.prototype = {

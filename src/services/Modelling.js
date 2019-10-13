@@ -8,7 +8,7 @@
 import a$ from 'as-sys';
 
 function Modelling(settings) {
-	a$.setup(this, settings);
+	a$.setup(this, Modelling.prototype, settings);
 
 	this.models = null;
 }

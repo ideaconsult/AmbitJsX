@@ -10,7 +10,7 @@ function Paging(settings) {
 
 };
 
-Paging.prototype = {
+Paging.prototype.nextPage = function() {
 
 };
 

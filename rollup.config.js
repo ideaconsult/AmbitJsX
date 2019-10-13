@@ -10,7 +10,8 @@ export default {
 		banner: '/** AmbitJsX library - a neXt Ambit queries JavaScript library. Copyright © 2019, IDEAConsult Ltd. All rights reserved. @license MIT.*/',
 		globals: { 
 			"lodash" : "_",
-			"as-sys": "asSys"
+			"as-sys": "asSys",
+			"ambit-jsx": "Ambit"
 		}
 	},
 	external: [ "lodash", "as-sys" ]
