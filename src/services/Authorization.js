@@ -7,23 +7,38 @@
 
 import a$ from 'as-sys';
 
-function Authorization(settings) {
-    a$.setup(this, Authorization.prototype, settings);
+var defSettings = {
+
 };
 
-Authorization.prototype = {
-    afterResponse: null,
+function Authorization(settings) {
+    a$.setup(this, defSettings, settings);
+};
 
-    loadRoles() {
-    },
+Authorization.prototype.init = function (manager) {
+	// Let the other initializers.
+	a$.pass(this, Authorization, "init", manager);
 
-    loadPolicies() {
+	this.manager = manager;
+}
 
-    },
 
-    addPolicy(data) {
+Authorization.prototype.loadRoles = function () {
+    this.manager.doRequest("admin/restpolicy", function (result, jhr, opts) {
 
-    }
+    });
+};
+
+Authorization.prototype.loadPolicies = function () {
+    this.manager.doRequest("admin/restpolicy", function (result, jhr, opts) {
+
+    });
+};
+
+Authorization.prototype.addPolicy = function (data) {
+    this.manager.doRequest("admin/restpolicy", function (result, jhr, opts) {
+
+    });
 };
 
 export default Authorization;

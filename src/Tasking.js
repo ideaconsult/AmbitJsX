@@ -38,13 +38,13 @@ Tasking.prototype.pollTask = function (taskUri, callback) {
 				method: 'GET'
 			};
 
-		settings.error = function (jhr) {
-			callback(null, jhr);
-		};
-
-		settings.success = proceedOnTask;
 		settings.dataType = "json";
-		self.manager.doRequest(settings);
+		self.manager.doRequest(settings, true, function (task, jhr) {
+			if (task == null)
+				callback(null, jhr);
+			else
+				proceedOnTask(task, jhr);
+		});
 	}
 
 	proceedOnTask = function (task, jhr) {
@@ -60,7 +60,7 @@ Tasking.prototype.pollTask = function (taskUri, callback) {
 			setTimeout(function () {
 				queryTask(task.result);
 			}, self.pollDelay);
-		} else if (Date.now() - taskStart > self.poolTimeout) // timedout
+		} else if (Date.now() - taskStart > self.poolTimeout) // timed out
 			callback(task, jhr);
 		else
 			setTimeout(function () {
