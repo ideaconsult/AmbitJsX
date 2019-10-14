@@ -1,6 +1,6 @@
 asSys = require("as-sys");
 _ = require("lodash");
-CB = require("commbase-jsx");
+jT = require("jToxKit");
 Ambit = require("..");
 
 a$ = asSys;
