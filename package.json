@@ -35,7 +35,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"as-sys": "git+ssh://git@github.com/thejonan/asSys.js.git",
-		"lodash": "^4.17.15"
+		"lodash": "^4.17.19"
 	},
 	"bugs": {
 		"url": "https://github.com/ideaconsult/AmbitJsX/issues"
